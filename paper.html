@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>העבודה המלאה</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="container container-pdf">
+    <header class="viewer-header">
+      <a class="back-btn" href="index.html">← חזרה לתפריט</a>
+      <div class="viewer-title-wrap">
+        <h1 class="viewer-title">העבודה המלאה</h1>
+        <p class="viewer-subtitle">קובץ PDF של העבודה המלאה</p>
+      </div>
+    </header>
+
+    <!-- פעולה אחת ברורה (מובייל קודם) -->
+    <section class="card" style="padding:14px;">
+      <a class="btn primary" style="width:100%;" href="assets/pdfs/full_paper.pdf" target="_blank" rel="noopener noreferrer">
+        פתיחה מיידית של ה-PDF
+      </a>
+      <p class="viewer-note" style="margin:10px 0 0;">
+        בטלפון הקובץ ייפתח ישירות (מומלץ). במחשב ייתכן שיופיע גם תצוגה בתוך הדף.
+      </p>
+    </section>
+
+    <!-- ניסיון תצוגה בתוך הדף (בעיקר לדסקטופ) -->
+    <section id="embedWrap" class="pdf-card" style="margin-top:12px;">
+      <iframe id="pdfFrame" class="pdf-frame" src="assets/pdfs/full_paper.pdf" title="העבודה המלאה"></iframe>
+    </section>
+
+    <!-- הודעת fallback אם embed לא עובד -->
+    <section id="fallback" class="card" style="margin-top:12px; display:none;">
+      <h2 style="margin:0 0 6px;">ה-PDF לא נטען בתוך הדף</h2>
+      <p style="margin:0; color: var(--muted);">
+        זה קורה לפעמים בטלפונים ובחלק מהדפדפנים. פשוט לחצו על
+        <strong>“פתיחה מיידית של ה-PDF”</strong>.
+      </p>
+    </section>
+
+    <div class="footer">חומרי המחקר • העבודה המלאה</div>
+  </main>
+
+  <script>
+    // Mobile-first: בהרבה טלפונים iframe PDF לא יעבוד.
+    // ננסה לזהות מובייל ולהסתיר embed מראש (כדי לחסוך "שלב" של תסכול).
+    const isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
+
+    const embedWrap = document.getElementById('embedWrap');
+    const fallback = document.getElementById('fallback');
+
+    if (isMobile) {
+      // במובייל — לא מציגים embed בכלל, רק כפתור פתיחה
+      embedWrap.style.display = 'none';
+      fallback.style.display = 'block';
+    } else {
+      // בדסקטופ: אם אחרי 2 שניות לא נטען (או ריק/שגיאה), מציגים fallback
+      setTimeout(() => {
+        // אין דרך אמינה "לבדוק טעינה" של PDF ב-iframe, אז עושים fallback עדין:
+        // אם המשתמש רואה בעיה — יש כפתור פתיחה מיידית תמיד.
+        // כאן אנחנו פשוט משאירים את ה-embed, ולא מטרידים אלא אם רוצים.
+      }, 2000);
+    }
+  </script>
+</body>
+</html>
