@@ -333,60 +333,26 @@ a { color: inherit; }
   border: 1px solid rgba(242,224,181,.18);
 }
 
-/* Contact image */
-.contact-photo{
-  width: 100%;
-  height: auto;
-  display:block;
-  border-radius: 18px;
-  border: 1px solid rgba(255,255,255,.10);
-  margin-top: 12px;
-  background: #0b0b0c;
-}
-
-/* Footer */
-.footer{
-  margin-top: 18px;
-  text-align:center;
-  color: rgba(243,243,243,.55);
-  font-size: .9rem;
-  padding: 8px;
-}
-/* Contact avatar (small profile image) */
-.contact-header{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  margin-top: 10px;
+/* ===== Contact avatar in header (top-left) ===== */
+.viewer-title-wrap.contact-title{
+  position: relative;
+  padding-left: 96px; /* מקום לתמונה בצד שמאל */
 }
 
 .contact-avatar{
-  width:72px;
-  height:72px;
-  border-radius:999px;
-  object-fit:cover;
+  position: absolute;
+  left: 14px;
+  top: 14px;
+  width: 68px;
+  height: 68px;
+  border-radius: 999px;
+  object-fit: cover;
   border: 1px solid rgba(255,255,255,.14);
-  background:#0b0b0c;
+  background: #0b0b0c;
   box-shadow: 0 10px 22px rgba(0,0,0,.28);
-  flex:0 0 auto;
 }
 
 @media (max-width:480px){
-  .contact-avatar{
-    width:64px;
-    height:64px;
-  }
-}
-
-.contact-header-text{
-  min-width:0;
-}
-
-.contact-header-text h2{
-  margin:0 0 4px;
-}
-
-.contact-header-text p{
-  margin:0;
-  color: var(--muted);
+  .viewer-title-wrap.contact-title{ padding-left: 86px; }
+  .contact-avatar{ width: 60px; height: 60px; left: 12px; top: 12px; }
 }
