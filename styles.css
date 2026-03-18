@@ -28,12 +28,12 @@ html, body { height: 100%; }
 body{
   margin:0;
   background:
-    radial-gradient(900px 450px at 85% -10%, rgba(159,208,255,.22), rgba(0,0,0,0) 60%),
-    radial-gradient(700px 360px at 15% -12%, rgba(242,224,181,.12), rgba(0,0,0,0) 62%),
+    radial-gradient(1000px 500px at 85% -10%, rgba(159,208,255,.20), rgba(0,0,0,0) 60%),
+    radial-gradient(760px 380px at 15% -12%, rgba(242,224,181,.10), rgba(0,0,0,0) 62%),
     linear-gradient(180deg, #06101f 0%, var(--bg) 55%, #06101f 100%);
   color: var(--text);
   font-family: "Assistant", system-ui, -apple-system, Segoe UI, Arial, sans-serif;
-  line-height: 1.45;
+  line-height: 1.55;
 }
 
 .container{
@@ -47,6 +47,11 @@ body{
 }
 
 a { color: inherit; }
+a:focus-visible,
+button:focus-visible{
+  outline: 2px solid var(--accent-blue);
+  outline-offset: 2px;
+}
 
 /* =========================
    HERO / HEADER
@@ -56,7 +61,7 @@ a { color: inherit; }
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow);
-  padding: 18px;
+  padding: 20px;
   overflow: hidden;
   position: relative;
 }
@@ -85,11 +90,11 @@ a { color: inherit; }
 }
 
 .hero h1{
-  margin: 10px 0 6px;
+  margin: 12px 0 8px;
   font-family: "Space Grotesk","Assistant",sans-serif;
   letter-spacing: -0.02em;
-  font-weight: 700;
-  font-size: 1.55rem;
+  font-weight: 800;
+  font-size: clamp(1.45rem, 1.12rem + 1.2vw, 2rem);
 }
 
 .hero p{
@@ -100,7 +105,7 @@ a { color: inherit; }
 }
 
 .hero-footer{
-  margin-top: 12px;
+  margin-top: 14px;
   display:flex;
   flex-wrap:wrap;
   gap:10px;
@@ -138,6 +143,57 @@ a { color: inherit; }
   border: 1px solid rgba(159,208,255,.22);
 }
 
+.hero-stats{
+  margin-top: 16px;
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.hero-stat{
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,.03);
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap: 6px;
+}
+
+.hero-stat .label{
+  font-size: .82rem;
+  color: var(--muted);
+}
+
+.hero-stat .value{
+  font-family: "Space Grotesk","Assistant",sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+@media (max-width:640px){
+  .hero-stats{ grid-template-columns: 1fr; }
+}
+
+.section-head{
+  margin-top: 18px;
+  margin-bottom: 8px;
+}
+
+.section-head h2{
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.section-head p{
+  margin: 2px 0 0;
+  color: var(--muted);
+  font-size: .92rem;
+}
+
 /* =========================
    MENU CARDS
 ========================= */
@@ -145,7 +201,7 @@ a { color: inherit; }
   display:grid;
   grid-template-columns: 1fr;
   gap: 12px;
-  margin-top: 14px;
+  margin-top: 10px;
 }
 @media (min-width:760px){
   .menu-grid{ grid-template-columns: 1fr 1fr; }
@@ -155,7 +211,7 @@ a { color: inherit; }
   display:flex;
   gap: 12px;
   align-items:center;
-  padding: 14px;
+  padding: 15px;
   border-radius: var(--radius);
   border: 1px solid var(--border);
   background: linear-gradient(180deg, rgba(12,33,64,.88), rgba(10,27,51,.88));
@@ -169,6 +225,7 @@ a { color: inherit; }
   border-color: rgba(159,208,255,.30);
   box-shadow: 0 16px 30px rgba(0,0,0,.28);
 }
+.menu-card:active{ transform: translateY(-1px); }
 
 .menu-icon{
   width: 52px;
@@ -324,6 +381,12 @@ a { color: inherit; }
 }
 
 .viewer-note{
+  margin: 10px 4px 0;
+  color: var(--muted);
+  font-size: .95rem;
+}
+
+.pdf-note{
   margin: 10px 4px 0;
   color: var(--muted);
   font-size: .95rem;
